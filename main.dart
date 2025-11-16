@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title:'LoginPage',
       home: LoginPage(),
     );
   }
@@ -171,4 +172,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
 
