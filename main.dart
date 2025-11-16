@@ -22,17 +22,20 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name ="";
+
+  final TextEditingController UserName = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
    void login() {
+  String user = UserName.text.trim();
   String email = emailController.text.trim();
   String pass = passwordController.text.trim();
 
   // Email or password empty check
-  if (email.isEmpty || pass.isEmpty) {
+  if (email.isEmpty || pass.isEmpty || user.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Email & Password cannot be empty")),
+      SnackBar(content: Text("UserName ,Email & Password cannot be empty")),
     );
     return;
   }
@@ -62,6 +65,9 @@ class _LoginPageState extends State<LoginPage> {
     context,
     MaterialPageRoute(builder: (context) => HomePage()),
   );
+  UserName.clear();
+  emailController.clear();
+  passwordController.clear();
 }
 
 
@@ -99,13 +105,13 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 30),
                 //USERNAME
                 TextField(
-                  
+                  controller: UserName,
                   decoration: InputDecoration(
                     labelText: "UserName",
                     prefixIcon: Icon(Icons.person),
                     hint: Text('Enter Your Name'),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12)),
                   ),
                   onChanged: (value) {
                     setState(() {
@@ -125,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.email),
                     hint: Text('Enter Your Email'),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12)),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -139,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                     hint: Text('Enter Your Password'),
                     prefixIcon: Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12)),
                   ),
                 ),
                 SizedBox(height: 30),
