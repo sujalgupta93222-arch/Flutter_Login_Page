@@ -9,3 +9,6 @@ It includes three input fields: Username, Email, and Password.
 Basic validation is added to check empty fields, email format, and password length.
 After successful login, the app navigates to the Home Page.
 The design is beginner-friendly and fully customizable.
+
+
+thank you
