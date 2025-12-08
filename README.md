@@ -1,16 +1,7 @@
 # loginpage
 
-A new Flutter project.
+Update password suffix with visibility icon 
+<img width="1920" height="1032" alt="Screenshot 2025-12-08 193026" src="https://github.com/user-attachments/assets/ab1f4db6-9802-4fa6-9778-080a85e5231d" />
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="1920" height="1032" alt="Screenshot 2025-12-08 193010" src="https://github.com/user-attachments/assets/b1af35c3-100c-4895-97aa-f2188d3f29ab" />
