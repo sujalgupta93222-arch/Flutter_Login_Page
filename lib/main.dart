@@ -28,14 +28,24 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController UserName = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  
 
-   void login() {
+  bool login1 = false;
+  void login() async{
+    setState(() {
+      login1=true;
+    });
+  
+
   String user = UserName.text.trim();
   String email = emailController.text.trim();
   String pass = passwordController.text.trim();
 
   // Email or password empty check
   if (email.isEmpty || pass.isEmpty || user.isEmpty) {
+    setState(() {
+      login1 = false;
+    });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("UserName ,Email & Password cannot be empty")),
     );
@@ -48,6 +58,9 @@ class _LoginPageState extends State<LoginPage> {
   ).hasMatch(email);
 
   if (!emailValid) {
+    setState(() {
+      login1 = false;
+    });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("Please enter a valid email address")),
     );
@@ -56,17 +69,26 @@ class _LoginPageState extends State<LoginPage> {
 
   // Password length check (Minimum 6)
   if (pass.length < 6) {
+    setState(() {
+      login1 = false;
+    });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("Password must be at least 6 characters")),
     );
     return;
   }
+   await Future.delayed(Duration(seconds: 3));
 
+  setState(() {
+    login1 = false;
+      }); // hide loader before navigation
+  
   // All good → next page
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => HomePage()),
   );
+
   UserName.clear();
   emailController.clear();
   passwordController.clear();
@@ -172,7 +194,12 @@ class _LoginPageState extends State<LoginPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                   ),
-                  child: Text(
+                  child: login1
+      ? CircularProgressIndicator(
+          strokeWidth: 2,
+          color: Colors.black,
+        )
+      : Text(
                     "Login",
                     style: TextStyle(fontSize: 18),
                   ),
